@@ -1,6 +1,5 @@
 #!/bin/bash
 for file in $(find . -type f -name "*.gif"); do
-    # استخدم parameter expansion فقط لإزالة المسار وامتداد .gif
-    name="${file##*/}"   # إزالة المسار
-    echo "${name%.gif}"  # إزالة الامتداد
+name="${file##*/}"
+    echo "${name%.gif}"
 done | sort -f
