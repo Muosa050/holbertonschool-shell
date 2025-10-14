@@ -1,8 +1,6 @@
 #!/bin/bash
-# البحث عن كل ملفات .gif في كل المجلدات بما فيها المخفية
-find . -type f -name "*.gif" -print | while read -r file; do
-    # استخراج اسم الملف فقط بدون المسار
-    filename="${file##*/}"
-    # إزالة امتداد .gif
-    echo "${filename%.gif}"
+for file in $(find . -type f -name "*.gif"); do
+    # استخدم parameter expansion فقط لإزالة المسار وامتداد .gif
+    name="${file##*/}"   # إزالة المسار
+    echo "${name%.gif}"  # إزالة الامتداد
 done | sort -f
