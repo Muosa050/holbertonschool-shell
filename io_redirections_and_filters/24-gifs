@@ -1,9 +1,2 @@
 #!/bin/bash
-# Find all regular files ending with .gif, including hidden ones
-# Print their names without the .gif extension, one per line, sorted case-insensitively
-
-find . -type f -name "*.gif" -printf "%f\n" | \
-while IFS= read -r file; do
-    # Remove the .gif extension
-    echo "${file%.gif}"
-done | sort -f
+find . -type f -name "*.gif" -printf "%f\n" | sed 's/\.gif$//' | sort -f
