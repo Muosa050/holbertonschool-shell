@@ -1,2 +1,8 @@
 #!/bin/bash
-find . -type f -name "*.gif" -printf "%f\n" | sed 's/\.gif$//' | sort -f
+# البحث عن كل ملفات .gif في كل المجلدات بما فيها المخفية
+find . -type f -name "*.gif" -print | while read -r file; do
+    # استخراج اسم الملف فقط بدون المسار
+    filename="${file##*/}"
+    # إزالة امتداد .gif
+    echo "${filename%.gif}"
+done | sort -f
